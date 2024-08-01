@@ -24,11 +24,7 @@ const initilizeDbAndServer = async() => {
     }
 }
 app.get('/user', async (req,res) => {
-    const getUsersQuery = `
-    SELECT * FROM users;`;
-    const usersArray = await db.all(getUsersQuery);
-    console.log(usersArray);
-    res.send(usersArray);
+    res.send('Hello World');
 });
 
 
