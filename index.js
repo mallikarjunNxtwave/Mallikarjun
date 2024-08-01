@@ -1,32 +1,23 @@
 const express = require('express');
-const path = require('path');
-const {open} = require('sqlite');
-const sqlite3 = require('sqlite3');
+const dotEnv = require('dotenv');
+const mongoose = require('mongoose');
+const userRoutes = require('./routes/userRoutes');
+const bodyParser = require('body-parser');
+
+
 const app = express();
 
-const dbPath = path.join(__dirname,"user.db");
+const PORT = 5005;
 
-let db = null;
+dotEnv.config();
 
-const initilizeDbAndServer = async() => {
-    try {
-        db = await open({
-            filename: dbPath,
-            driver: sqlite3.Database,
-        });
-        app.listen(5005, () => {
-            console.log('Server Running at 5005');
-        })
-        
-    } catch (error) {
-        console.log(`Db Error: ${error.message}`);
-        process.exit(1);
-    }
-}
-app.get('/user', async (req,res) => {
-    res.send('Hello World');
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("Mongo db Connected Successfully"))
+.catch((error) => console.log(error));
+
+app.use(bodyParser.json())
+app.use('/user', userRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Server Running at ${PORT}`);
 });
-
-
-
-initilizeDbAndServer();
