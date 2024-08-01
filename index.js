@@ -27,7 +27,7 @@ const initilizeDbAndServer = async() => {
     }
 }
 app.get('/user', async (req,res) => {
-    res.send('Hello World');
+    res.send(message:'Hello World');
 });
 
 
