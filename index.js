@@ -24,7 +24,7 @@ const initilizeDbAndServer = async() => {
     }
 }
 app.get('/', async (req,res) => {
-    res.send(<h1>HELLO WORLD1!</h1>);
+    res.send("<h1>HELLO WORLD1!</h1>");
 });
 
 
