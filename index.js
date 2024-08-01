@@ -24,7 +24,10 @@ const initilizeDbAndServer = async() => {
     }
 }
 app.get('/user', async (req,res) => {
-    res.send("<h1>HELLO WORLD1!</h1>");
+    const getUsersQuery = `
+    SELECT * FROM user;`;
+    const usersArray = await db.all(getUsersQuery);
+    res.send(usersArray);
 });
 
 
