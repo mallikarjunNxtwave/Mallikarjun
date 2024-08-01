@@ -25,7 +25,7 @@ const initilizeDbAndServer = async() => {
 }
 app.get('/user', async (req,res) => {
     const getUsersQuery = `
-    SELECT * FROM user;`;
+    SELECT * FROM users;`;
     const usersArray = await db.all(getUsersQuery);
     res.send(usersArray);
 });
