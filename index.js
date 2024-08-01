@@ -11,7 +11,6 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-const dbPath = path.join(__dirname,"user.db");
 
 dotEnv.config();
 
