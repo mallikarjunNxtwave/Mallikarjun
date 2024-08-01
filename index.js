@@ -23,7 +23,7 @@ const initilizeDbAndServer = async() => {
         process.exit(1);
     }
 }
-app.get('/', async (req,res) => {
+app.get('/user', async (req,res) => {
     res.send("<h1>HELLO WORLD1!</h1>");
 });
 
